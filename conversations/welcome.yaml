@@ -1,0 +1,6 @@
+plugins:
+    - welcome
+
+script:
+    - set_slot options ["Lindo dia","Buenos dias"]
+    - welcome.get_welcome('greeting',options)

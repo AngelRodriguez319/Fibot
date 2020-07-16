@@ -1,0 +1,30 @@
+
+settings:
+    name: FIBOT
+
+slots:
+    - name
+
+dbs:
+    main: import_csv data.csv
+
+conversations:
+    - 'conversations/operations.yaml'
+    - 'conversations/welcome.yaml'
+
+
+strategies:
+    name:
+        - say "Mi nombre es Fibot, soy un robot matematico"
+        - say "Dime ¿Cuàl es tu nombre?"
+        - input name
+        - remember name
+        - say f"Mucho gusto en conocerte {name}"    
+
+
+script:
+    - solve welcome
+    - say greeting
+    - loop_slots
+    - say f"Me alegro de verte de nuevo {name}"
+    - solve operations

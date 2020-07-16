@@ -1,0 +1,55 @@
+
+
+plugins:
+  - operations
+
+slot:
+  - name
+
+strategies:
+  suma:
+    - say "Ingresa el primer numero"
+    - input sumando1
+    - say "Ingresa el segundo numero"
+    - input sumando2
+    - operations.operations('suma', sumando1, sumando2) 
+    - say result
+  resta:
+    - say "Ingresa el primer numero"
+    - input sumando1
+    - say "ingresa el segundo numero"
+    - input sumando2
+    - operations.operations('resta',sumando1,sumando2)
+    - say result
+      
+  multiplicacion:
+    - say "Ingresa el primer numero"
+    - input multiplicando1
+    - say "Ingresa el segundo numero"
+    - input multiplicando2
+    - operations.operations('multiplicacion', multiplicando1, multiplicando2) 
+    - say result
+
+  division:
+    - say "Ingresa el primer numero"
+    - input dividiendo1
+    - say "Ingresa el segundo numero"
+    - input dividiendo2
+    - operations.operations('division', dividiendo1, dividiendo2)
+    - say result
+
+  menu:
+    - say "Elija un Opción."
+    - say "1. suma"
+    - say "2. resta"
+    - say "3. multiplicaciòn"
+    - say "4. divisiòn"
+    - input opcion 
+    - if opcion == "1" then solve suma 
+    - if opcion == "2" then solve resta
+    - if opcion == "3" then solve multiplicacion
+    - if opcion == "4" then solve division
+
+script:
+  - solve menu
+      
