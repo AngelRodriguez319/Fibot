@@ -11,20 +11,31 @@ dbs:
 conversations:
     - 'conversations/operations.yaml'
     - 'conversations/welcome.yaml'
-
+    - 'conversations/trigonometria.yaml'
+    - 'conversations/dato_interesante.yaml'
 
 strategies:
+
     name:
         - say "Mi nombre es Fibot, soy un robot matematico"
         - say "Dime ¿Cuàl es tu nombre?"
         - input name
         - remember name
-        - say f"Mucho gusto en conocerte {name}"    
-
+        - say f"Mucho gusto en conocerte {name}"
+    despedida:
+        - say f"Me dio mucho gusto Ayudarte {name}, espero volverte a ver pronto"
 
 script:
     - solve welcome
     - say greeting
     - loop_slots
     - say f"Me alegro de verte de nuevo {name}"
-    - solve operations
+    - solve dato_interesante
+    - say "¿Què deseas hacer?"
+    - say "1. Resolver operaciones basicas"
+    - say "2. Resolver operaciones trigonometricas"
+    - input opcion
+    - if opcion == "1" then solve operations
+    - if opcion == "2" then solve  trigonometria
+    - solve despedida
+    

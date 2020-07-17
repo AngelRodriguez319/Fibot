@@ -1,0 +1,87 @@
+
+plugins:
+  - operations
+
+strategies:
+
+  seno:
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("seno", angulo)
+    - say result
+
+  coseno: 
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("coseno", angulo)
+    - say result
+
+  tangente:
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("tangente", angulo)
+    - say result
+  
+  cotagente:
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("cotangente", angulo)
+    - say result
+  
+  secante:
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("secante", angulo)
+    - say result
+
+  cosecante:
+    - say "Digita el angulo"
+    - input angulo
+    - operations.operations_trigonometricas("cosecante", angulo)
+    - say result
+
+  arcoseno:
+    - say "Digita el numero"
+    - input numero
+    - operations.operations_trigonometricas("arcoseno", numero)
+    - say result
+
+  arcocoseno:
+    - say "Digita el numero"
+    - input numero
+    - operations.operations_trigonometricas("arcocoseno", numero)
+    - say result
+
+  arcotangente:
+    - say "Digita el numero"
+    - input numero
+    - operations.operations_trigonometricas("arcotangente", numero)
+    - say result
+
+  menu1:
+    - say "¿Què deseas hacer?"
+    - say "1. Obtener el seno"
+    - say "2. Obtener el coseno"
+    - say "3. Obtener la tangente"
+    - say "4. Obtener la cotangente"
+    - say "5. Obtener la secante"
+    - say "6. Obtener la cosecante"
+    - say "7. Obtener la arcoseno"
+    - say "8. Obtener la arcocoseno"
+    - say "9. Obtener la arcotangente"
+    - input opcion 
+    - if opcion == "1" then solve seno 
+    - if opcion == "2" then solve coseno
+    - if opcion == "3" then solve tangente
+    - if opcion == "4" then solve cotagente
+    - if opcion == "5" then solve secante
+    - if opcion == "6" then solve cosecante
+    - if opcion == "7" then solve arcoseno
+    - if opcion == "8" then solve arcocoseno
+    - if opcion == "9" then solve arcotangente
+
+
+
+script:
+  - solve menu1
+

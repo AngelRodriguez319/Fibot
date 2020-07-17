@@ -1,0 +1,15 @@
+
+
+plugins:
+  - dato_interesante
+
+slot:
+  - name
+
+dbs:
+    main: import_csv ../data.csv
+
+script:
+  - dato_interesante.get_dato_interesante(*db['main'])
+  - say dato_interesante
+      
