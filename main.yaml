@@ -5,6 +5,9 @@ settings:
 slots:
     - name
 
+plugins:
+    - model
+
 dbs:
     main: import_csv data.csv
 
@@ -23,7 +26,19 @@ strategies:
         - remember name
         - say f"Mucho gusto en conocerte {name}"
     despedida:
-        - say f"Me dio mucho gusto Ayudarte {name}, espero volverte a ver pronto"
+        - say f"Me dio gusto Ayudarte {name}, espero volverte a ver pronto"
+    confirmacion:
+        - say "¿Quieres resolver una operacion?"
+        - input confirmacion | yesno
+    operacion:
+        - say 'dame una operación'
+        - input operacion | model operations
+        - say f"la operacion es {operacion}"
+        - model.final(operacion)
+        - if result == "No te entendi" then say result
+        - if result != "No te entendi" then say f"El resultado es {result}"  
+        - say "¿Quieres realizar otra operacion?"
+        - input more | yesno
 
 script:
     - solve welcome
@@ -31,11 +46,8 @@ script:
     - loop_slots
     - say f"Me alegro de verte de nuevo {name}"
     - solve dato_interesante
-    - say "¿Què deseas hacer?"
-    - say "1. Resolver operaciones basicas"
-    - say "2. Resolver operaciones trigonometricas"
-    - input opcion
-    - if opcion == "1" then solve operations
-    - if opcion == "2" then solve  trigonometria
-    - solve despedida
-    
+    - say "Puedo esolver operaciones basicas y trigonometricas"
+    - if confirmacion == True then solve operacion
+    - if confirmacion == False then solve despedida
+    - while more == True then solve operacion
+
